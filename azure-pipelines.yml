@@ -22,17 +22,11 @@ steps:
     goals: 'package'
 - task: CopyFiles@2
   inputs:
-    Contents: '**/.war'
+    Contents: '**/*.war'
     TargetFolder: '$(build.artifactstagingdirectory)'
 - task: PublishBuildArtifacts@1
   inputs:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
     ArtifactName: 'warfile'
     publishLocation: 'Container'
-- task: DownloadBuildArtifacts@1
-  inputs:
-    buildType: 'current'
-    downloadType: 'single'
-    artifactName: 'warfiles1'
-    itemPattern: '**/.war'
-    downloadPath: '$(System.ArtifactsDirectory)'
+-
